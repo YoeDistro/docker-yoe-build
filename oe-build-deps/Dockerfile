@@ -15,10 +15,9 @@ RUN apt-get update && \
 	apt-get install -yq sudo build-essential git \
           python man bash diffstat gawk chrpath wget cpio \
           texinfo lzop apt-utils && \
-        rm -rf /var/lib/apt-lists/* \
-	echo "dash dash/sh boolean false" | debconf-set-selections \
+        rm -rf /var/lib/apt-lists/* && \
+	echo "dash dash/sh boolean false" | debconf-set-selections && \
 	DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
-
 
 RUN useradd -ms /bin/bash build
 RUN usermod -aG sudo build

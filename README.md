@@ -47,6 +47,11 @@ This example illustrates several fundamental principals of Docker:
 1. don't work in the context of the container, only use it to run commands (bitbake in this case)
 1. don't store state in the container -- keep that in your host file system
 
+Details
+-------
+
+This container is based on Debian Jessie.  Debian has proven to be an excellent OS for production OE builds where you might need to generate builds for a project over a period of years.  OE can be rather fussy about versions of host packages (such as gcc, make, etc) so having a build distro where these are locked down is essential.  Using containers allows developers to run whatever distro the want on their workstation, yet have a stable/common distro for the OE build.
+
 License
 -------
 

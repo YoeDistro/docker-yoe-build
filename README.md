@@ -36,8 +36,8 @@ docker run --rm -it \
 
 Some notes on the above:
 
-* The oe-build template that is cloned above is a simple wrapper around OE designed for product development needs.  See https://github.com/cbrake/oe-build for more information.
-* The build directory is mapped into the container at the same location as the host.  This keeps things simple and minimizes confusion.
+* The oe-build template that is cloned above is a simple wrapper around OE designed for product development needs.  See https://github.com/cbrake/oe-build for more information.  You can use your own OE/Yocto build tree -- this is just for example purposes.
+* The build directory is mapped into the container at the same location as the host.  This keeps things simple and ensures that any paths in generated config files are the same in the container, and on the host.
 * Host ssh keys are mapped into container so that we can clone project git repos using ssh authentication.
 * Host gitconfig is mapped into the container as well in case the build requires any git push operations (such as tagging).
 
@@ -51,6 +51,8 @@ Details
 -------
 
 This container is based on Debian Jessie.  Debian has proven to be an excellent OS for production OE builds where you might need to generate builds for a project over a period of years.  OE can be rather fussy about versions of host packages (such as gcc, make, etc) so having a build distro where these are locked down is essential.  Using containers allows developers to run whatever distro the want on their workstation, yet have a stable/common distro for the OE build.
+
+The container has on user "build", and it may be necessary that the user in your host has UID 1000 so they match.  
 
 License
 -------

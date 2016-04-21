@@ -1,7 +1,7 @@
 OE Build Container
 ==================
 
-A Linux container based on Debian Jessie that has packages required for OE/Yocto builds.
+A Linux container for production OE/Yocto builds.
 
 Why?
 ----
@@ -21,6 +21,8 @@ Example
 * git clone https://github.com/cbrake/oe-build.git
 * cd oe-build
 * git checkout jethro
+* source envsetup.sh
+* oe\_setup
 * then run the following docker command:
 
 ```
@@ -29,7 +31,7 @@ docker run --rm -it \
   -v ~/.ssh:/home/build/.ssh \
   -v ~/.gitconfig:/home/build/.gitconfig \
   cbrake/oe-build \
-  /bin/bash -c "cd $(PWD) && source envsetup.sh && bitbake core-image-minimal"
+  /bin/bash -c "cd $(pwd) && source envsetup.sh && bitbake core-image-minimal"
 ```
 
 Some notes on the above:
@@ -39,4 +41,21 @@ Some notes on the above:
 * Host ssh keys are mapped into container so that we can clone project git repos using ssh authentication.
 * Host gitconfig is mapped into the container as well in case the build requires any git push operations (such as tagging).
 
+This example illustrates several fundamental principal of Docker: 
+
+1. use Docker for apps/standard stuff, but keep data and build dirs in your host file system
+1. don't work in the context of the container, only use it to run commands (bitbake in this case)
+1. don't store state in the container -- keep that in your host file system
+
+License
+-------
+
+MIT
+
+Author
+------
+
+Cliff Brake <cbrake@bec-systems.com>
+
+improvements/pull requests welcome!
 

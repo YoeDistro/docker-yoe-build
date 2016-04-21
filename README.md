@@ -50,9 +50,9 @@ This example illustrates several fundamental principals of Docker:
 Details
 -------
 
-This container is based on Debian Jessie.  Debian has proven to be an excellent OS for production OE builds where you might need to generate builds for a project over a period of years.  OE can be rather fussy about versions of host packages (such as gcc, make, etc) so having a build distro where these are locked down is essential.  Using containers allows developers to run whatever distro the want on their workstation, yet have a stable/common distro for the OE build.
+This container is based on Debian Jessie.  Debian has proven to be an excellent OS for production OE builds where you might need to generate builds for a project over a period of years.  OE can be rather fussy about versions of host packages (such as gcc, make, etc) so having a build distro where these are locked down is essential.
 
-The container has on user "build", and it may be necessary that the user in your host has UID 1000 so they match.  
+Processes in the container run as the "build" user by default, so it may be necessary that the user in your host has UID 1000 so they match.  
 
 License
 -------

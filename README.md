@@ -7,8 +7,8 @@ Why?
 ----
 
 OE builds require a small number of dependencies that must be installed.  This is not a huge deal,
-but can take 30-60 minutes to figure out what they all are and wait for them to install.  
-This container gives you everything you need.
+but can take 30-60 minutes to figure out what they all are and wait for them to install.  This 
+container gives you everything you need.
 
 Additionally, production builds require a known build environment where package versions are 
 not changing.  Using a container for OE builds allows team members to use whatever Linux distro
@@ -20,6 +20,7 @@ Example
 * install git and docker
 * git clone https://github.com/cbrake/oe-build.git
 * cd oe-build
+* git checkout jethro
 * then run the following docker command:
 
 ```

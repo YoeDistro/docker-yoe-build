@@ -41,7 +41,7 @@ Some notes on the above:
 * Host ssh keys are mapped into container so that we can clone project git repos using ssh authentication.
 * Host gitconfig is mapped into the container as well in case the build requires any git push operations (such as tagging).
 
-This example illustrates several fundamental principal of Docker: 
+This example illustrates several fundamental principals of Docker: 
 
 1. use Docker for apps/standard stuff, but keep data and build dirs in your host file system
 1. don't work in the context of the container, only use it to run commands (bitbake in this case)

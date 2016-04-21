@@ -1,15 +1,3 @@
-# this container can be used to set up a Debian OS with dependencies
-# required to run OE builds.  This allows you to have a stable
-# build OS, yet run on various workstations/servers with different
-# or rolling updates.  It works best if the host user is the first
-# user so that user/group ids match the build user in the container.
-# 
-# docker run -v /host-oe-workspace:/home/build/oe \
-#       (cd oe && . envsetup.sh && bitbake my-image)
-# docker run --rm -v /scratch/fmc-oe-bbb:/home/build/fmc-oe-build -v ~/.ssh:/home/build/.ssh cbrake/oe-build-deps /bin/bash -c "cd fmc-oe-build && . envsetup.sh && bitbake fmc-bbb-image"
-
-#
-
 FROM debian:jessie
 MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 

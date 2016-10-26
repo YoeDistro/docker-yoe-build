@@ -3,7 +3,7 @@ MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
 RUN apt-get update && \
 	apt-get install -yq sudo build-essential git \
-	  python man bash diffstat gawk chrpath wget cpio \
+	  python python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen libncurses5-dev && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \

@@ -13,10 +13,11 @@ RUN apt-get update && \
 RUN useradd -ms /bin/bash -p build build && \
 	usermod -aG sudo build
 
-RUN echo LANG="en_US.UTF-8" >> /etc/default/locale && \
-    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-    locale-gen && \
-	
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen
+
+ENV LANG en_US.utf8
+
 USER build
 WORKDIR /home/build
 

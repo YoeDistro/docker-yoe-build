@@ -5,7 +5,7 @@ RUN apt-get update && \
 	apt-get install -yq sudo build-essential git \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen libncurses5-dev locales \
-          libc6-dev-i386 doxygen && \
+          libc6-dev-i386 doxygen libssl-dev && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \
 	DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash

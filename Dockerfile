@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
 RUN apt-get update && \

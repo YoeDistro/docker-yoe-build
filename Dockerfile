@@ -3,7 +3,7 @@ MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
 RUN \
 	DEBIAN_FRONTEND=noninteractive dpkg --add-architecture i386 && \
-	apt-get update && apt-get -y upgrade && \
+	apt-get update && apt-get upgrade -y && \
 	apt-get install -yq sudo build-essential git \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen libncurses5-dev locales \

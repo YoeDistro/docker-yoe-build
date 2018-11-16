@@ -8,7 +8,7 @@ RUN \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen libncurses5-dev locales \
 	  doxygen libssl-dev dos2unix xvfb x11-utils \
-	  libstdc++6-dev:i386 libc6-dev:i386 g++-multilib gcc-multilib \
+	  libstdc++-6-dev:i386 libc6-dev:i386 g++-multilib gcc-multilib \
 	  libssl-dev:i386 libcrypto++-dev:i386 zlib1g-dev:i386 \
 	procps && \
 	rm -rf /var/lib/apt-lists/* && \

@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster
 MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
 RUN \

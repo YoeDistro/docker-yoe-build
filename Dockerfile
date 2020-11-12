@@ -1,6 +1,9 @@
 FROM ubuntu:20.04
 MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
+# stuff not building
+# libcrypto++-dev:i386
+
 RUN \
 	dpkg --add-architecture i386 && \
         apt-get update && \
@@ -8,7 +11,7 @@ RUN \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen libncurses5-dev locales \
           libc6-dev-i386 doxygen libssl-dev dos2unix xvfb x11-utils \
-	  g++-multilib libssl-dev:i386 libcrypto++-dev:i386 zlib1g-dev:i386 \
+	  g++-multilib libssl-dev:i386 zlib1g-dev:i386 \
 	  libtool libtool-bin procps python3-distutils pigz socat && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \

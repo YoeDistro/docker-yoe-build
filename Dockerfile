@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM ubuntu:20.04
 MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
 RUN \

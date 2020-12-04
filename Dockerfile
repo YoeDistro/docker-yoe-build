@@ -4,6 +4,8 @@ MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 # stuff not building
 # libcrypto++-dev:i386
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN \
 	dpkg --add-architecture i386 && \
         apt-get update && \
@@ -15,7 +17,7 @@ RUN \
 	  libtool libtool-bin procps python3-distutils pigz socat && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \
-	DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
+	dpkg-reconfigure dash
 
 RUN useradd -ms /bin/bash -p build build && \
 	usermod -aG sudo build

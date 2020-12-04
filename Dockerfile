@@ -1,6 +1,8 @@
 FROM debian:buster
 MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN \
 	dpkg --add-architecture i386 && \
         apt-get update && \
@@ -13,7 +15,7 @@ RUN \
 	  python3-jinja2 && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \
-	DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
+	dpkg-reconfigure dash
 
 RUN useradd -ms /bin/bash -p build build && \
 	usermod -aG sudo build

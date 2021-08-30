@@ -12,7 +12,7 @@ RUN \
           libc6-dev-i386 doxygen libssl-dev dos2unix xvfb x11-utils \
 	  g++-multilib libssl-dev:i386 libcrypto++-dev:i386 zlib1g-dev:i386 \
 	  libtool libtool-bin procps python3-distutils pigz socat \
-	  python3-jinja2 && \
+	  python3-jinja2 lz4 zstd && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \
 	dpkg-reconfigure dash

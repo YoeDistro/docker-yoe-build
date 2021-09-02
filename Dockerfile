@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
 ARG DEBIAN_FRONTEND=noninteractive

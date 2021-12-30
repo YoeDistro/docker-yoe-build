@@ -8,7 +8,7 @@ RUN \
         apt-get update && \
 	apt-get install -yq sudo build-essential git-core \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
-	  texinfo lzop apt-utils bc screen libncurses5-dev locales \
+	  texinfo lzop apt-utils bc screen tmux libncurses5-dev locales \
           libc6-dev:armhf doxygen libssl-dev dos2unix xvfb x11-utils \
 	  libssl-dev:armhf libcrypto++-dev:armhf zlib1g-dev:armhf \
 	  libtool libtool-bin procps python3-distutils pigz socat \

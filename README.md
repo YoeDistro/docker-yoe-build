@@ -44,6 +44,15 @@ Processes in the container run as the "build" user by default, so it may be nece
 host has UID 1000 so they match. If necessary, create a special use with UID 1000 to do OE builds on your build
 machine.
 
+## Building and pushing an updated image to docker hub
+
+- clone this repo
+- build: `docker build -t yoedistro/yoe-build:bullseye .` (note period at end)
+- test: `docker run -it yoedistro/yoe-build:bullseye`
+- push: `docker image push yoedistro/yoe-build:bullseye`
+
+The push step likely requires some type of auth setup, but the errors will likely guide you through it.
+
 ## License
 
 MIT

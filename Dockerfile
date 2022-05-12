@@ -13,7 +13,8 @@ RUN \
 	  libssl-dev:armhf libcrypto++-dev:armhf zlib1g-dev:armhf \
 	  libtool libtool-bin procps python3-distutils pigz socat \
 	  python3-jinja2 python3-pip python3-pexpect lz4 zstd unzip xz-utils \
-	  debianutils iputils-ping python3-git pylint3 python3-subunit && \
+	  debianutils iputils-ping python3-git pylint3 python3-subunit \
+	  iproute2 && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \
 	dpkg-reconfigure dash

@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN \
 	dpkg --add-architecture i386 && \
         apt-get update && \
-	apt-get install -yq sudo build-essential git-core \
+	apt-get install -yq sudo build-essential git-core git-lfs \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen tmux libncurses5-dev locales \
           libc6-dev-i386 doxygen libssl-dev dos2unix xvfb x11-utils \

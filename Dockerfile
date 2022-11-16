@@ -11,7 +11,7 @@ RUN \
 	  libstdc++-6-dev:i386 libc6-dev:i386 g++-multilib gcc-multilib \
 	  libssl-dev:i386 libcrypto++-dev:i386 zlib1g-dev:i386 \
 	  libicu-dev:i386 libssl-dev:i386 zlib1g-dev:i386 \
-	  procps && \
+	  procps upx && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \
 	DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash

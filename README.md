@@ -47,7 +47,8 @@ machine.
 ## Building and pushing an updated image to docker hub
 
 - clone this repo
-- build: `docker build -t yoedistro/yoe-build:bullseye .` (note period at end)
+- make sure docker-buildx is installed
+- build: `DOCKER_BUILDKIT=1 docker build -t yoedistro/yoe-build:bullseye .` (note period at end)
 - test: `docker run -it yoedistro/yoe-build:bullseye`
 - push: `docker image push yoedistro/yoe-build:bullseye`
 

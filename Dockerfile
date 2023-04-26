@@ -9,7 +9,7 @@ ARG DOCKER_USER=build
 RUN \
 	dpkg --add-architecture armhf && \
         apt-get update && \
-	apt-get install -yq sudo build-essential git-core iproute2 curl \
+	apt-get install -yq sudo build-essential git-core git-lfs iproute2 curl \
 	  python python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen tmux libncurses5-dev locales \
           libc6-dev:armhf doxygen libssl-dev dos2unix xvfb x11-utils \

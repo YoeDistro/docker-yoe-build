@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+  
+set -e
+set -u
+#set -x
+
+: "${UUID:=0}"
+: "${GGID:=${UUID}}"
+if [ "$UUID" != "0" ]
+then
+        usermod -u $UUID $DOCKER_USER 2>/dev/null && {
+                groupmod -g $GGID $DOCKER_USER 2>/dev/null ||
+                usermod -a -G $GGID $DOCKER_USER
+        }
+        exec gosu ${UUID}:${GGID} "$@"
+fi
+
+exec "$@"

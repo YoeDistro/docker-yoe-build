@@ -3,6 +3,9 @@ MAINTAINER Cliff Brake <cbrake@bec-systems.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Override user name at build. If build-arg is not passed, will create user named `default_user`
+ARG DOCKER_USER=build
+
 RUN \
 	dpkg --add-architecture i386 && \
         apt-get update && \
@@ -14,18 +17,28 @@ RUN \
 	  libtool libtool-bin procps python3-distutils pigz socat \
 	  python3-jinja2 python3-pip python3-pexpect lz4 zstd unzip xz-utils \
 	  debianutils iputils-ping python3-git pylint3 python3-subunit \
-	  iproute2 && \
+	  iproute2 curl && \
 	rm -rf /var/lib/apt-lists/* && \
 	echo "dash dash/sh boolean false" | debconf-set-selections && \
 	dpkg-reconfigure dash
 
-RUN useradd -ms /bin/bash -p build build && \
-	usermod -aG sudo build
+# Create a group and user
+RUN addgroup "$DOCKER_USER" && \
+    useradd -ms /bin/bash -g $DOCKER_USER -G sudo $DOCKER_USER && \
+    echo "${DOCKER_USER}:${DOCKER_USER}" | chpasswd  && \
+    echo 'build ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+RUN curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.16/gosu-$(dpkg --print-architecture)" && \
+    chmod +x /usr/local/bin/gosu
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
 
 ENV LANG en_US.utf8
 
-USER build
-WORKDIR /home/build
+COPY files /
+
+RUN chmod 0755 /entrypoint \
+ && sed "s/\$DOCKER_USER/$DOCKER_USER/g" -i /entrypoint
+
+ENTRYPOINT ["/entrypoint"]

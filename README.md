@@ -57,9 +57,13 @@ create a special use with UID 1000 to do OE builds on your build machine.
 
 - clone this repo
 - make sure docker-buildx is installed
-- build: `DOCKER_BUILDKIT=1 docker build -t yoedistro/yoe-build:bullseye .`
+- build:
+  `DOCKER_BUILDKIT=1 docker build -t yoedistro/yoe-build:bullseye-x86_64 .`
   (note period at end)
-- test: `docker run -it yoedistro/yoe-build:bullseye`
+- test: `docker run -it yoedistro/yoe-build:bullseye-x86_64 /bin/bash`
+- copy to legacy name:
+  `docker tag yoedistro/yoe-build:bullseye-x86_64 yoedistro/yoe-build:bullseye`
+- push: `docker image push yoedistro/yoe-build:bullseye-x86_64`
 - push: `docker image push yoedistro/yoe-build:bullseye`
 
 The push step likely requires some type of auth setup, but the errors will

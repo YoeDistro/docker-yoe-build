@@ -48,9 +48,10 @@ machine.
 
 - clone this repo
 - make sure docker-buildx is installed
-- build: `DOCKER_BUILDKIT=1 docker build -t yoedistro/yoe-build:bullseye .` (note period at end)
-- test: `docker run -it yoedistro/yoe-build:bullseye`
-- push: `docker image push yoedistro/yoe-build:bullseye`
+- build (on aarch64 host ): `DOCKER_BUILDKIT=1 docker build --tag yoedistro/yoe-build:bookworm-aarch64 .` (note period at end)
+- build ( on x86_64 host ): `DOCKER_BUILDKIT=1 docker build --tag yoedistro/yoe-build:bookworm-aarch64 --platform linux/aarch64 .`
+- test: `docker run -it yoedistro/yoe-build:bookworm-`uname -m``
+- push: `docker image push yoedistro/yoe-build:bookworm-`uname -m``
 
 The push step likely requires some type of auth setup, but the errors will likely guide you through it.
 

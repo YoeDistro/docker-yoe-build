@@ -18,9 +18,14 @@ RUN \
 	  python3-jinja2 python3-pip python3-pexpect lz4 zstd unzip xz-utils \
 	  debianutils iputils-ping python3-git pylint python3-subunit \
 	  iproute2 curl iptables && \
+	apt-get -yq upgrade && \
 	rm -rf /var/lib/apt-lists/* && \
-	echo "dash dash/sh boolean false" | debconf-set-selections && \
-	dpkg-reconfigure dash
+	dpkg-divert --remove --no-rename /usr/share/man/man1/sh.1.gz && \
+	dpkg-divert --remove --no-rename /bin/sh && \
+	ln -sf bash.1.gz /usr/share/man/man1/sh.1.gz && \
+	ln -sf bash /bin/sh && \
+	dpkg-divert --add --local --no-rename /usr/share/man/man1/sh.1.gz && \
+	dpkg-divert --add --local --no-rename /bin/sh
 
 # Create a group and user
 RUN addgroup "$DOCKER_USER" && \

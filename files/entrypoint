@@ -8,9 +8,9 @@ set -u
 : "${GGID:=${UUID}}"
 if [ "$UUID" != "0" ]
 then
-        usermod -u $UUID $DOCKER_USER 2>/dev/null && {
-                groupmod -g $GGID $DOCKER_USER 2>/dev/null ||
-                usermod -a -G $GGID $DOCKER_USER
+        usermod -u $UUID $DOCKER_USER 2>&1 > /dev/null && {
+                groupmod -g $GGID $DOCKER_USER 2>&1 > /dev/null ||
+                usermod -a -G $GGID $DOCKER_USER 2>&1 > /dev/null
         }
         exec gosu ${UUID}:${GGID} "$@"
 fi

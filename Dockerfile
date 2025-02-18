@@ -1,5 +1,5 @@
 FROM debian:bookworm
-MAINTAINER Cliff Brake <cbrake@bec-systems.com>
+LABEL maintainer="Cliff Brake <cbrake@bec-systems.com>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -39,7 +39,7 @@ RUN curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/do
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
 
-ENV LANG en_US.utf8
+ENV LANG=en_US.utf8
 
 COPY files /
 

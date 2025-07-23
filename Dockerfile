@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:trixie
 LABEL maintainer="Cliff Brake <cbrake@bec-systems.com>"
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -7,25 +7,25 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG DOCKER_USER=build
 
 RUN \
-	dpkg --add-architecture i386 && \
-        apt-get update && \
-	apt-get install -yq sudo build-essential git-core git-lfs \
+  dpkg --add-architecture i386 && \
+  apt-get update && \
+  apt-get install -yq sudo build-essential git-core git-lfs \
 	  python3 man bash diffstat gawk chrpath wget cpio \
 	  texinfo lzop apt-utils bc screen tmux libncurses5-dev locales \
-          libc6-dev-i386 doxygen libssl-dev dos2unix xvfb x11-utils \
+    libc6-dev-i386 doxygen libssl-dev dos2unix xvfb x11-utils \
 	  g++-multilib libssl-dev:i386 libcrypto++-dev:i386 zlib1g-dev:i386 \
-	  libtool libtool-bin procps python3-distutils pigz socat \
+	  libtool libtool-bin procps pigz socat \
 	  python3-jinja2 python3-pip python3-pexpect lz4 zstd unzip xz-utils \
 	  debianutils iputils-ping python3-git pylint python3-subunit \
 	  iproute2 curl iptables binfmt-support qemu-user-static && \
-	apt-get -yq upgrade && \
-	rm -rf /var/lib/apt-lists/* && \
-	dpkg-divert --remove --no-rename /usr/share/man/man1/sh.1.gz && \
-	dpkg-divert --remove --no-rename /bin/sh && \
-	ln -sf bash.1.gz /usr/share/man/man1/sh.1.gz && \
-	ln -sf bash /bin/sh && \
-	dpkg-divert --add --local --no-rename /usr/share/man/man1/sh.1.gz && \
-	dpkg-divert --add --local --no-rename /bin/sh
+  apt-get -yq upgrade && \
+  rm -rf /var/lib/apt-lists/* && \
+  dpkg-divert --remove --no-rename /usr/share/man/man1/sh.1.gz && \
+  dpkg-divert --remove --no-rename /bin/sh && \
+  ln -sf bash.1.gz /usr/share/man/man1/sh.1.gz && \
+  ln -sf bash /bin/sh && \
+  dpkg-divert --add --local --no-rename /usr/share/man/man1/sh.1.gz && \
+  dpkg-divert --add --local --no-rename /bin/sh
 
 # Create a group and user
 RUN addgroup "$DOCKER_USER" && \
@@ -33,7 +33,7 @@ RUN addgroup "$DOCKER_USER" && \
     echo "${DOCKER_USER}:${DOCKER_USER}" | chpasswd  && \
     echo 'build ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-RUN curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.16/gosu-$(dpkg --print-architecture)" && \
+RUN curl -o /usr/local/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.17/gosu-$(dpkg --print-architecture)" && \
     chmod +x /usr/local/bin/gosu
 
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \

@@ -17,7 +17,7 @@ RUN \
 	  libtool libtool-bin procps pigz socat \
 	  python3-jinja2 python3-pip python3-pexpect lz4 zstd unzip xz-utils \
 	  debianutils iputils-ping python3-git pylint python3-subunit \
-	  iproute2 curl iptables binfmt-support qemu-user-static && \
+	  iproute2 curl iptables binfmt-support qemu-user-static ccache && \
   apt-get -yq upgrade && \
   rm -rf /var/lib/apt-lists/* && \
   dpkg-divert --remove --no-rename /usr/share/man/man1/sh.1.gz && \
